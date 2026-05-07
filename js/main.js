@@ -78,38 +78,35 @@
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
   }
 
-  // ---- Hero video rotator (interval-driven, each clip ~4.5s) ----
+  // ---- Hero video rotator (interval-driven, each clip ~5s) ----
   const heroVideos = Array.from(document.querySelectorAll('#hero-videos .hero__video'));
   if (heroVideos.length > 0) {
-    const INTERVAL_MS = 4500;
+    const INTERVAL_MS = 5000;
     let active = 0;
 
-    const playClip = (idx) => {
-      const v = heroVideos[idx];
-      if (!v) return;
-      try { v.currentTime = 0; } catch (_) {}
-      v.play().catch(() => {});
+    // All clips play continuously (muted, looping) — we just crossfade opacity.
+    // No pause/play/currentTime resets, so loop attribute is fully respected.
+    const tryPlay = (v) => {
+      const p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
     };
 
-    const advance = () => {
+    heroVideos.forEach((v) => {
+      tryPlay(v);
+      // Belt-and-braces: if `loop` is somehow ignored, restart on `ended`.
+      v.addEventListener('ended', () => {
+        try { v.currentTime = 0; } catch (_) {}
+        tryPlay(v);
+      });
+    });
+
+    setInterval(() => {
       const next = (active + 1) % heroVideos.length;
       heroVideos[next].classList.add('is-active');
       heroVideos[active].classList.remove('is-active');
-      try { heroVideos[active].pause(); } catch (_) {}
+      tryPlay(heroVideos[next]);
       active = next;
-      playClip(active);
-    };
-
-    // Pre-warm subsequent clips so swap is seamless
-    heroVideos.forEach((v, i) => {
-      if (i > 0) setTimeout(() => v.load(), 1200 + i * 500);
-    });
-
-    // Kick off the first clip immediately
-    playClip(0);
-
-    // Fixed cadence — every 4.5s
-    setInterval(advance, INTERVAL_MS);
+    }, INTERVAL_MS);
   }
 
   // ---- Booking modal ----
