@@ -3,20 +3,21 @@
    Design tokens
    ========================================================= */
 :root {
-  --bg:        #1a1a1a;
-  --bg-alt:    #141414;
-  --bg-deep:   #0a0a0a;
-  --bg-card:   #161616;
-  --ink:       #f5f5f5;
-  --muted:     #a8a39b;
-  --muted-2:   #6e6a64;
-  --gold:      #d4af37;
-  --gold-soft: #b8932c;
-  --line:      rgba(245,245,245,0.10);
-  --line-gold: rgba(212,175,55,0.28);
+  --bg:        #fbf7f0;
+  --bg-alt:    #f2ead9;
+  --bg-deep:   #ebe1cc;
+  --bg-card:   #ffffff;
+  --ink:       #2a2520;
+  --ink-soft:  #4a423a;
+  --muted:     #8a7e72;
+  --muted-2:   #b8aea2;
+  --gold:      #b8932c;
+  --gold-soft: #a07c1f;
+  --line:      rgba(42,37,32,0.10);
+  --line-gold: rgba(184,147,44,0.32);
 
-  --display: 'Barlow Condensed', 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
-  --hero:    'Barlow Condensed', 'Inter Tight', sans-serif;
+  --display: 'Fraunces', 'Playfair Display', Georgia, serif;
+  --hero:    'Fraunces', 'Playfair Display', Georgia, serif;
   --body:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
   --container: 1240px;
@@ -53,11 +54,13 @@ a:hover { color: var(--gold); }
    ========================================================= */
 .display {
   font-family: var(--display);
-  font-weight: 800;
+  font-weight: 600;
   font-size: clamp(2.75rem, 6vw, 5.25rem);
-  line-height: .98;
-  letter-spacing: -.035em;
+  line-height: 1.02;
+  letter-spacing: -.02em;
   text-transform: none;
+  font-variation-settings: 'opsz' 144;
+  color: var(--ink);
 }
 .display--center { text-align: center; }
 .display--sm { font-size: clamp(2rem, 4.5vw, 3.25rem); }
@@ -173,7 +176,7 @@ a:hover { color: var(--gold); }
   font-size: clamp(8rem, 22vw, 22rem);
   line-height: .8;
   text-transform: uppercase;
-  color: rgba(245,245,245,0.04);
+  color: rgba(42,37,32,0.06);
   pointer-events: none;
   -webkit-user-select: none;
   user-select: none;
@@ -221,7 +224,7 @@ a:hover { color: var(--gold); }
   padding-bottom: clamp(0.75rem, 1.2vw, 1rem);
 }
 .nav.scrolled .nav__pill {
-  background: rgba(10, 10, 10, 0.78);
+  background: rgba(251, 247, 240, 0.85);
   border-color: var(--line);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
   backdrop-filter: blur(14px) saturate(120%);
@@ -362,7 +365,7 @@ a:hover { color: var(--gold); }
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(8, 8, 8, 0.97);
+  background: rgba(251, 247, 240, 0.98);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   flex-direction: column;
@@ -401,7 +404,7 @@ a:hover { color: var(--gold); }
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(42,37,32,0.04);
   border: 1px solid var(--line);
   color: var(--ink);
   cursor: pointer;
@@ -501,14 +504,15 @@ a:hover { color: var(--gold); }
 /* BARBERSHOP wordmark — Wayward "WAYWARD" treatment */
 .hero__title-main {
   font-family: var(--hero);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(2.75rem, 7vw, 5.5rem);
-  letter-spacing: .03em;
+  letter-spacing: .02em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #ffffff;
   line-height: 1;
   display: block;
   margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  font-variation-settings: 'opsz' 144;
 }
 
 /* Gold descriptor — letter-spaced subtitle below the wordmark */
@@ -654,7 +658,7 @@ a:hover { color: var(--gold); }
    Gallery — editorial horizontal scroll
    ========================================================= */
 .gallery {
-  background: #0e0e0e;
+  background: var(--bg-alt);
   padding: clamp(4rem, 8vw, 7rem) 0 clamp(3rem, 6vw, 5rem);
   position: relative;
 }
@@ -684,7 +688,7 @@ a:hover { color: var(--gold); }
   height: clamp(360px, 50vw, 580px);
   overflow: hidden;
   border-radius: 4px;
-  background: #1a1a1a;
+  background: var(--bg-card);
 }
 .gallery__item--tall {
   width: clamp(280px, 36vw, 480px);
@@ -762,7 +766,7 @@ a:hover { color: var(--gold); }
 .haircuts__item {
   overflow: hidden;
   border-radius: 4px;
-  background: #1a1a1a;
+  background: var(--bg-card);
 }
 .haircuts__item--lg {
   grid-row: span 2;
@@ -812,7 +816,7 @@ a:hover { color: var(--gold); }
 .barber__avatar {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: linear-gradient(160deg, #2a2a2a 0%, #181818 100%);
+  background: linear-gradient(160deg, #ffffff 0%, #f2ead9 100%);
   border: 1px solid var(--line-gold);
   display: flex;
   align-items: center;
@@ -837,7 +841,7 @@ a:hover { color: var(--gold); }
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 4px;
-  background: #1a1a1a;
+  background: var(--bg-card);
   margin-bottom: 1.5rem;
 }
 .barber__photo img {
@@ -959,7 +963,7 @@ a:hover { color: var(--gold); }
 .visit__map-frame-wrap {
   position: relative;
   height: clamp(260px, 32vw, 360px);
-  background: #1a1a1a;
+  background: var(--bg-card);
 }
 .visit__map-frame {
   width: 100%;
@@ -980,7 +984,7 @@ a:hover { color: var(--gold); }
   font-size: .72rem;
   letter-spacing: .35em;
   color: var(--gold);
-  background: rgba(10,10,10,0.85);
+  background: rgba(251,247,240,0.95);
   border: 1px solid var(--line-gold);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
@@ -1191,7 +1195,7 @@ a:hover { color: var(--gold); }
   padding: 1.1em 0.6em;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255,255,255,0.015);
+  background: rgba(42,37,32,0.025);
   font-family: var(--display);
   font-weight: 800;
   font-size: .82rem;
@@ -1286,7 +1290,7 @@ a:hover { color: var(--gold); }
 .book__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(6, 6, 6, 0.78);
+  background: rgba(42, 37, 32, 0.45);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -1318,7 +1322,7 @@ a:hover { color: var(--gold); }
   width: 36px;
   height: 36px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(42,37,32,0.04);
   border: 1px solid var(--line);
   color: var(--ink);
   cursor: pointer;
@@ -1392,7 +1396,7 @@ a:hover { color: var(--gold); }
   justify-content: center;
   font-size: .7rem;
   font-weight: 700;
-  background: rgba(255,255,255,0.02);
+  background: rgba(42,37,32,0.03);
   transition: all .25s ease;
 }
 .book__step.is-active { color: var(--gold); }
@@ -1442,7 +1446,7 @@ a:hover { color: var(--gold); }
   padding: 1.1rem 1.25rem;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: rgba(255,255,255,0.015);
+  background: rgba(42,37,32,0.025);
   cursor: pointer;
   font-family: inherit;
   color: var(--ink);
@@ -1492,7 +1496,7 @@ a:hover { color: var(--gold); }
   padding: .85rem .5rem;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: rgba(255,255,255,0.015);
+  background: rgba(42,37,32,0.025);
   color: var(--ink);
   cursor: pointer;
   font-family: inherit;
@@ -1582,7 +1586,7 @@ a:hover { color: var(--gold); }
   padding: .75em .5em;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: rgba(255,255,255,0.015);
+  background: rgba(42,37,32,0.025);
   color: var(--ink);
   font-family: var(--display);
   font-weight: 700;
@@ -1619,7 +1623,7 @@ a:hover { color: var(--gold); }
 .book__field input[type="email"],
 .book__field input[type="tel"] {
   padding: .85em 1em;
-  background: rgba(255,255,255,0.02);
+  background: rgba(42,37,32,0.03);
   border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--ink);
